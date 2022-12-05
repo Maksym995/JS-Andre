@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mes Listes</h1>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+
+    <script>
+
+        let ulli = document.querySelector("ul");
+        ulli.insertAdjacentHTML("beforeend", "<li>4</li><li>5</li>");
+
+        let olli = document.querySelector("ol")
+        olli.insertAdjacentHTML("afterbegin","<li>-1</li><li>-2</li>");
+
+        let h2 = document.querySelector("h1")
+        h2.insertAdjacentHTML("afterend", "<h2>Mon JS</h2>");
+
+        let olli1 = document.querySelector("ol>li")                     //  let olli1 = document.querySelector("ol>li")
+        olli1.textContent = "premier";
+
+        let ulli1 = document.querySelector("ul li:nth-child(2)")
+        ulli1.textContent = "-deuxieme";
+
+        let h1 = document.querySelector("h1")
+        h1.style.color="red";
+
+        
+
+
+    </script>
+
+<!--
+Créez une page HTML qui contient un H1 comme titre et deux listes (une ordonnée et une non-ordonnée) qui contiendront 3 li chacune
+	
+Sélectionnez la liste non-ordonnée et rajouter 2 li à la fin
+	
+Sélectionnez la liste ordonnée et rajoutez 2 li au début
+	
+Rajoutez un sous-titre de votre choix après le titre
+	
+Modifiez le contenu du premier élément de la liste ordonnée
+	
+Modifiez le contenu du second élément de la liste non-ordonnée
+	
+Changez le couleur du titre 
+-->
+
+
+</body>
+</html>
+
