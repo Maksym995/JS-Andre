@@ -15,6 +15,14 @@
 				padding: 0.8em;
 				border-radius: 5px;
 			}
+
+			.invalidCaptcha {
+				border: solid 2px red;
+			}
+			.validCaptcha {
+
+			}
+
 		</style>
 	</head>
 	
@@ -49,6 +57,7 @@
 				// Vide le contenu de l'élément avec l'id "captcha" et y insère un nouveau captcha
 				function generateCaptcha() {
 					captcha.innerHTML = "";
+					captchaInput.value = "";
 
 					let captchaArray = getElementsFromArray(allCharacters, captchaLen);
 					for (let i = 0; i < captchaArray.length; i++) {
@@ -61,8 +70,11 @@
 				// Vérifie si l'entrée utilisateur correspond au captcha et appelle le callback sinon génère un nouveau captcha
 				function validateCaptcha() {
 					if (captcha.textContent === captchaInput.value) {
+						captchaInput.classList.remove("invalidCaptcha");
+						captchaInput.classList.add("validCaptcha");
 						callback();
 					} else {
+						captchaInput.classList.add("invalidCaptcha");
 						generateCaptcha(captchaLen);
 					}
 				}
