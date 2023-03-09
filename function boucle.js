@@ -446,21 +446,38 @@ prompt("test")
 
 //ecrire dans prompt et que ce soit retranscrit dans la barre de google et le logo fait une rotation
 
-let logoGoogle = document.querySelector(".lnXdpd");
+let logoGooglee = document.querySelector(".lnXdpd")
 
-let inputText = document.querySelector(".gLFyf")
+let inputTextt = document.querySelector(".gLFyf")
 
 function animateLogo() {
     logoGoogle.animate([{transform: "rotate(0deg)"}, {transform:  "rotate(360deg)"}], 500)
 }
 
-let idInterval = setInterval(animateLogo, 1000)
+let idIntervall = setInterval(animateLogo, 1000)
 
 
 
 function askText() {
     let inputUser = prompt("Text à insérer: ")
-    inputText.value = inputUser
+    inputTextt.value = inputUser
 }
 
-logoGoogle.addEventListener('click', askText)
+logoGooglee.addEventListener('click', askText)
+
+
+//Vous recevez une liste de noms d'employés et une liste de salaires des employés. Les 
+//deux arrays possèdent le même ordre qui fait correspondre employés et salaires. 
+//Ecrivez une fonction qui prend une string contenant le nom de l'employé et retourne 
+//le salaire de l'employé si l'employé existe ou alors une string indiquant que cet 
+//employé n'existe pas.
+employes = ['Jean Lefèvre', 'Marie Platain', 'John Leroy', 'Dmitri Zirkov', 'Mohammed Kassab', 'Bénévolence Adebowale', 'Motoko Sawaguri'];
+salaires = [2200, 2100, 3000, 2400, 2000, 3700, 4000];
+
+function emplSalaire(nomEmploye) {
+    if(employes.includes(nomEmploye)) {
+     let i = employes.indexOf(nomEmploye);
+     console.log(nomEmploye + " gagne " + salaires[i] + " euros par jour");
+    }}
+
+    

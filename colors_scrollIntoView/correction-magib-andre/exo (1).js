@@ -6,7 +6,7 @@ let couleurDeFont = document.querySelector("#backgroundColor")
 textColor.addEventListener("change", changeTextColor);
 backgroundColor.addEventListener("change", changeBackgroundColor);
 
-function changeTextColor() {
+function changeTextColor() { 
   let body = document.querySelector("body")
   body.style.color = textColor.value
   sessionStorage.setItem("#textColor", textColor.value);
