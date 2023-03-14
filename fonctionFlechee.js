@@ -21,3 +21,4 @@ const impaire = num => num % 2 !== 0
 
 impaire(2)
 //Résultat false         sinon  impair(1) = true
+
