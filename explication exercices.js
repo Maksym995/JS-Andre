@@ -270,6 +270,3 @@ function getFiches(files, startWeek, endWeek) {
 }
 getFiches(annee, 3, 9);
 
-// 6) Pas fini
-function presidentThis(president){let president = {nom: "John Kennery"};
-                        console.log(this.nom)}

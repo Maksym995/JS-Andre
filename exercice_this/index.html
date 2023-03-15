@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p onclick="myFunction(this)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe perferendis, vel animi praesentium omnis quas necessitatibus sequi? Sint minima numquam inventore</p>
+
+    <p onclick="myFunction(this)">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio id sit quis minima cumque dolor eum repellendus. </p>
+
+    <p onclick="myFunction(this)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore sunt laboriosam in magni nobis fugiat minima, quo exercitationem, asperiores</p>
+    
+    <script>
+        // p.onclick = function () {myFunction(this)}
+        // p.onclick()
+        // myFunction(this)
+
+        function myFunction(element) {
+            let color = element.style.color;
+            console.log(color)
+
+            if(color === '' || color === 'black') { // ! convertit en booléen et ça l'inverse
+                element.style.color = 'red'
+            } else if(color === 'red') {
+                element.style.color = 'green'
+            } else if(color === 'green') {
+                element.style.color = 'blue'
+            } else if(color === 'blue'){
+                element.style.color = 'black'
+            }
+        }
+        
+        
+    </script>
+
+</body>
+</html>
