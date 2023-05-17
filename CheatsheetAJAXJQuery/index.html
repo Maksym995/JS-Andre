@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="titre">Test</h1>
+
+<script defer>
+    function success(data, status) {
+        let api = data.entries[0].API;
+        let description = data.entries[0].Description;
+        let link = data.entries[0].Link;
+
+        let titre = document.querySelector('#titre');
+        titre.insertAdjacentHTML('afterend', `<div>
+                <h3>${api}</h3>
+                <p>${description}</p>
+                <a href='${link}' target='blank'>Lien</a>
+            </div>`)
+    }
+
+    $.get('https://api.publicapis.org/random', success)
+</script>
+</body>
+</html>

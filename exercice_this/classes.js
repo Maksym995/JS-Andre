@@ -262,3 +262,237 @@ class WebDeveloper {
     }
     
 }
+
+// Créez une classe voiture qui possédera un modèle, une marque, un prix actuel, un prix de base, une vitesse, une vitesse max et un état de déplacement (immobile ou mouvant, via un booléen, qui est basé sur la vitesse actuelle)
+ 
+//Chaque voiture doit pouvoir accélèrer (sans jamais dépasser la vitesse max), freiner (la vitesse ne peut pas descendre sous 0), et donne son statut à travers une chaîne de caractère. Elle doit aussi avoir des réductions via une méthode qui modifiera le prix (via un pourcentage)
+class Voiture{
+    constructor(modele,marque,prixActuel,prixBase,vitesseMax,etatDeplacement,vitesse = 0){
+    this.modele = modele;
+    this.marque = marque;
+    this.prixActuel = prixActuel;
+    this.prixBase = prixBase;
+    this.vitesse = vitesse;
+    this.vitesseMax = vitesseMax;
+    this.etatDeplacement = etatDeplacement;
+    }
+
+    get etatDeplacement(){
+        return this._etatDeplacement;
+    }
+
+    get modele(){
+        return this._modele;
+    }
+    set modele(valeur){
+        if(typeof valeur === "string"){
+            this._modele = valeur;
+        }
+    }
+    get marque(){
+        return this._marque;
+    }
+    set marque(valeur){
+        if(typeof valeur === "string"){
+            this._marque = valeur;
+        }
+    }
+    get prixActuel(){
+        return this._prixActuel;
+    }
+    set prixActuel(valeur){
+        if(typeof valeur === 'number'){
+            throw new Error("Le paramètre 'increment' doit être un nombre !");
+        }
+        this._prixActuel = valeur;
+    }
+    get prixBase(){
+        return this._prixBase;
+    }
+    set prixBase(valeur){
+        if(typeof valeur === 'number'){
+            throw new Error("Le paramètre 'increment' doit être un nombre !");        
+        }
+        this._this.prixBase = valeur;
+    }
+
+    accelerer(increment) {
+        if (typeof increment !== "number") {
+          throw new Error("Le paramètre 'increment' doit être un nombre !");
+        }
+        this.vitesse += increment;
+        if (this.vitesse > this.vitesseMax) {
+          this.vitesse = this.vitesseMax;
+        }
+        this._etatDeplacement = this.vitesse > 0;
+      }
+    
+      freiner(decrement) {
+        if (typeof decrement !== "number") {
+          throw new Error("Le paramètre 'decrement' doit être un nombre !");
+        }
+        this.vitesse -= decrement;
+        if (this.vitesse < 0) {
+          this.vitesse = 0;
+        }
+        this._etatDeplacement = this.vitesse > 0;
+      }
+      
+      statut() {
+        return `La voiture ${this.marque} ${this.modele} est actuellement en ${this.etatDeplacement}, avec une vitesse de ${this.vitesse} km/h.`;
+      }
+    
+      appliquerReduction(pourcentage) {
+        const reduction = (this.prixBase * pourcentage) / 100;
+        this.prixActuel = this.prixBase - reduction;
+      }
+
+}
+
+const voiture1 = new Voiture("Clio", "Renault", 15000, 18000, 180, false, 0);
+const voiture2 = new Voiture("Model 3", "Tesla", 50000, 55000, 225, false, 0);
+
+// ANDRE
+class Voiture {
+    constructor(modele, marque, prixActuel, prixBase, vitesseActuelle, vitesseMax, etatDeplacement) {
+        this.modele = modele;
+        this.marque = marque;
+        this.prixActuel = prixActuel;
+        this.prixBase = prixBase;
+        this.vitesseActuelle = vitesseActuelle;
+        this.vitesseMax = vitesseMax;
+        this.etatDeplacement = vitesse > 0 ? true : false;
+    }
+    accelerer(increment) {
+        if (this.vitesseActuelle + increment <= this.vitesseMax && increment > 0) {
+            this.vitesseActuelle += increment
+        }
+        if (this.vitesseActuelle > 0) this.etatDeplacement = true;
+    }
+    freiner(decrement) {
+        if (this.vitesseActuelle - decrement >= 0 && decrement > 0) {
+            this.vitesseActuelle -= decrement
+        }
+        if (this.vitesseActuelle === 0) this.etatDeplacement = false;
+    }
+    reduction(pourcentage) {
+        this.prixActuel = this.prixBase - this.prixBase * (pourcentage / 100)
+    }
+    status() {
+        return `${this.modele} ${this.marque} a une vitesse max de ${this.vitesseMax}km/h et est actuellement ${this.etatDeplacement ? "mouvante" : "immobile"} à ${this.vitesseActuelle}km/h. Son prix de base est de ${this.prixBase} et est actuellement en vente à ${this.prixActuel}`
+    }
+}
+
+// 10) Vous devez représenter le personnel d'un avion à travers des objets en utilisant des classes.Créez une classe Travailleur qui possédera un nom, un prénom, des jours de congés restants aux nombres de 20 par défaut, une date d'embauche, une date de fin de contrat (undefined si CDI), un salaire et une méthode informations pour afficher toutes ces informations sous forme de phrase.
+// &&
+// 11) Ajoutez à votre classe Travailleur une méthode prendreConge qui prendra en argument un entier qui servira à diminuer le nombre de congés restants avant d'afficher le nombre de congés restants. Les congés restants ne peuvent descendre sous 0.
+
+class Travailleur{
+    constructor(nom,prenom,joursCongesRestants=20,dateEmbauche,dateFinContrat,salaire){
+        this.nom=nom;
+        this.prenom=prenom;
+        this.joursCongesRestants=joursCongesRestants;
+        this.dateEmbauche=dateEmbauche;
+        this.dateFinContrat=dateFinContrat;
+        this.salaire=salaire;
+    }
+    get nom(){
+        return this._nom;
+    }
+    set nom(valeur){
+        if(typeof valeur === 'string'){
+            this._nom=valeur;
+        }
+    }
+    get prenom(){
+        return this._prenom;
+    }
+    set prenom(valeur){
+        if(typeof valeur ==='string'){
+            this._prenom=valeur;
+        }
+    }
+    get dateEmbauche(){
+        return this._dateEmbauche;
+    }
+    set dateEmbauche(valeur){
+        if(valeur instanceof Date){
+            this._dateEmbauche=valeur;
+        }
+    }
+    get joursCongesRestants(){
+        return this._joursCongesRestants
+    }
+    set joursCongesRestants(valeur){
+        if(typeof valeur === 'number'){
+            this._joursCongesRestants=valeur;
+        }
+    }
+    get dateFinContrat(){
+        return this._dateFinContrat;
+    }
+    set dateFinContrat(valeur){
+        if(valeur instanceof Date || valeur === undefined){
+            this._dateFinContrat=valeur;
+        }
+    }
+    get salaire(){
+        return this._salaire;
+    }
+    set salaire(valeur){
+        if(typeof valeur === 'number'){
+            this._salaire=valeur;
+        }
+    }
+    prendreConge(valeur){
+        if (valeur <= this.joursCongesRestants && valeur > 0) {
+            this.joursCongesRestants -= valeur;
+        }
+    }
+    informations(){
+        return `${this.nom} ${this.prenom} a encore ${this.joursCongesRestants}, il a été embaucher le: ${this.dateEmbauche} et son contrat prend fin le: ${this.dateFinContrat}. Son salaire est de ${this.salaire}.`
+ }
+}
+
+// 10) Partie 2
+// Créez ensuite une classe HotesseAir qui prendra comme classe ancêtre Travailleur. Les hôtesses de l'air posséderont toujours par défaut un contrat d'un an et un salaire de 2000€. Elles auront également une méthode renouvelerContrat qui ajoutera une année à leur fin de contrat.
+class HotesseAir extends Travailleur {
+    constructor(nom,prenom,joursCongesRestants=20,dateEmbauche,dateFinContrat,salaire=2000){
+        super(nom,prenom,joursCongesRestants,dateEmbauche,dateFinContrat,salaire)
+        const dateFinContrat = new Date(dateEmbauche);
+        dateFinContrat.setFullYear(dateFinContrat.getFullYear()+1);
+        this.dateFinContrat = dateFinContrat;
+    }
+
+    renouvelerContrat(nbAnnees = 1){
+        //Pour que dateFinContrat sois une date il faut que l'instanceof sois en Date ( voir const)
+        this.dateFinContrat.setFullYear(this.dateFinContrat.getFullYear() + nbAnnees);
+    }
+}
+
+// Viendra ensuite la classe PiloteAir qui prendra également comme classe ancêtre Travailleur. Leur contrat sera par défaut sans fin et avec un salaire de 8000€. Les pilotes auront une propriété supplémentaire appelée joursRecup qui contiendra le nombre de jours qu'ils peuvent récupérer. Ils auront de plus une méthode longCourrier qui ajoutera un jour de récupération à chaque long voyage accompli.
+// Instanciez à partir des deux sous-classes pour tester la validité de votre code.
+// Redéfinissez cette méthode sur la classe PiloteAir car les pilotes doivent prendre minimum 7 jours de congé à la fois.
+
+class PiloteAir extends Travailleur {
+    constructor(nom,prenom,joursCongesRestants=20,dateEmbauche, salaire=8000,dateFinContrat=undefined, joursRecup = 0){    
+        super(nom,prenom,joursCongesRestants,dateEmbauche,dateFinContrat,salaire)
+        this.joursRecup = joursRecup;
+    }
+    longCourrier(){
+        this.joursRecup += 1;
+    }
+    prendreConge(valeur){
+        if (valeur<= this.joursCongesRestants && valeur >= 7) {
+            this.joursCongesRestants -= valeur;
+            console.log(`Il reste ${this.joursCongesRestants}`)
+        }
+    }
+}
+// Instanciez à partir des deux classes filles (HotesseAir & PiloteAir) et vérifiez que la méthode prendreConge fonctionne correctement. Si c'est le cas dessinez 2 schémas, un pour chaque classe, afin de montrer le chemin parcouru dans la chaîne de prototype.
+const hotesse = new HotesseAir("Dupont", "Marie", 20, new Date("2020-05-01"));
+const pilote = new PiloteAir("Martin", "Pierre", 20, new Date("2019-03-15"), 8000, 0, undefined);
+
+
+
+
